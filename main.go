@@ -17,7 +17,7 @@ type Produto struct {
 }
 
 func connectDB() *sql.DB {
-	conn := "user=postgres dbname=postgres password=postgres host=localhost sslmode=disable"
+	conn := "user=postgres dbname=postgres password=postgres host=localhost sslmode=disable search_path=alura_store"
 	db, err := sql.Open("postgres", conn)
 
 	if err != nil {

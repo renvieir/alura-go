@@ -13,6 +13,10 @@ Start database
 
 `docker-compose up -d`
 
+Install dependencies
+
+`go mod tidy`
+
 Run go script
 
 `go run main.go`

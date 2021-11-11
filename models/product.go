@@ -44,3 +44,13 @@ func SearchAllProducts() []Produto {
 
 	return products
 }
+
+func InsertProduct(nome, descricao string, preco float64, quantidade int) {
+	conn := db.CreateConnection()
+	insertQuery, err := conn.Prepare("INSERT INTO alura_store.products (nome, descricao, preco, quantidade) VALUES($1, $2, $3, $4);")
+	if err != nil {
+		panic(err.Error())
+	}
+	insertQuery.Exec(nome, descricao, preco, quantidade)
+	defer conn.Close()
+}

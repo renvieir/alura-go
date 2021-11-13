@@ -54,3 +54,13 @@ func InsertProduct(nome, descricao string, preco float64, quantidade int) {
 	insertQuery.Exec(nome, descricao, preco, quantidade)
 	defer conn.Close()
 }
+
+func DeleteProduct(id string) {
+	conn := db.CreateConnection()
+	deleteQuery, err := conn.Prepare("DELETE FROM alura_store.products WHERE id=$1;")
+	if err != nil {
+		panic(err.Error())
+	}
+	deleteQuery.Exec(id)
+	defer conn.Close()
+}

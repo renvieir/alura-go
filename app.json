@@ -1,0 +1,12 @@
+{
+  "name": "Alura Go",
+  "description": "learning go with alura",
+  "keywords": [
+    "getting-started",
+    "go",
+    "learning",
+    "alura"
+  ],
+  "website": "http://github.com/renvieir/alura-go",
+  "repository": "http://github.com/renvieir/alura-go"
+}

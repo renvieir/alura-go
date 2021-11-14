@@ -53,3 +53,33 @@ func DeleteProduct(id string) {
 	deleteQuery.Exec(id)
 	defer conn.Close()
 }
+
+func UpdateProduct(id string, nome, descricao string, preco float64, quantidade int) {
+	conn := db.CreateConnection()
+	updateQuery, err := conn.Prepare("UPDATE alura_store.products SET nome=$1, descricao=$2, preco=$3, quantidade=$4 WHERE id=$5;")
+	if err != nil {
+		panic(err.Error())
+	}
+	updateQuery.Exec(nome, descricao, preco, quantidade, id)
+	defer conn.Close()
+}
+
+func FindProductById(id string) Produto {
+	conn := db.CreateConnection()
+	findQuery, err := conn.Query("SELECT * FROM alura_store.products WHERE id=$1;", id)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	product := Produto{}
+
+	for findQuery.Next() {
+		err = findQuery.Scan(&product.Id, &product.Nome, &product.Descricao, &product.Preco, &product.Quantidade)
+		if err != nil {
+			panic(err.Error())
+		}
+	}
+
+	defer conn.Close()
+	return product
+}

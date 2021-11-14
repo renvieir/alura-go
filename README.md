@@ -29,6 +29,6 @@ This project was based on alura go course, here is [the source repo](https://git
 
 until this commit we followed, with some changes, the instructor code, following I want to do some other enhancements:
 
-- [ ] get db string from env vars
-- [ ] deploy it somewhere
+- [x] get db string from env vars
+- [x] deployed [on heroku](https://alura-go.herokuapp.com/)
 - [ ] clean/refactor code

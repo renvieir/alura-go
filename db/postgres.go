@@ -2,13 +2,13 @@ package db
 
 import (
 	"database/sql"
+	"os"
 
 	_ "github.com/lib/pq"
 )
 
 func CreateConnection() *sql.DB {
-	conection := "user=postgres dbname=postgres password=postgres host=localhost sslmode=disable search_path=alura_store"
-	db, err := sql.Open("postgres", conection)
+	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 
 	if err != nil {
 		panic(err.Error())
